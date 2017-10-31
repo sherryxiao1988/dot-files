@@ -1,0 +1,79 @@
+color molokai
+" Gif config
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+
+nmap <s-enter> o<esc>
+nmap <cr> o<esc>
+
+"folding settings
+set foldmethod=syntax  "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+set bs=2
+
+"exit insertion mode
+inoremap jk <esc>
+
+"use the clipboard regster as the default register
+set clipboard=unnamed
+
+"tab manipulation
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-0> :tablast<CR>
+
+map <D-S-]> gt
+map <D-S-[> gT
+
+"use a split exporer instead of a project drawer
+let NERDTreeHijackNetrw=1
+
+"open files in the same folder as the current file
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+"Ack
+map <leader>F :Ack 
+
+"ctrp settings
+nnoremap <leader>G :CtrlPBufTag<CR>
+nnoremap <leader>g :CtrlPTag<CR>
+
+"vimruby settings
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+"move out of closing braces in insertion mode
+inoremap <C-e> <C-o>A
+inoremap <C-a> <esc>^i
+
+"ctrlp cmatch algorithm
+"let g:ctrlp_match_func = {'match' : 'cpsm#CtrlPMatch' }
+let g:cpsm_query_inverting_delimiter = ' '
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
+"clostag
+let g:closetag_filenames = "*.jade,*.html,*.xhtml,*.phtml"
+
+let delimitMate_expand_cr = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_javascript_checkers = ['eslint']
